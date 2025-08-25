@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAuthStore from "../store/useStore";
+import API_BASE_URL from "../config/api";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -17,13 +18,10 @@ const SignIn = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post(
-        "http://localhost:5000/collabitor/api/v1/users/signin",
-        {
-          email,
-          password,
-        }
-      );
+      const res = await axios.post(`${API_BASE_URL}users/signin`, {
+        email,
+        password,
+      });
       login(res.data.user, res.data.token);
       navigate("/dashboard");
     } catch (err) {
