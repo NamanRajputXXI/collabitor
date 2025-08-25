@@ -18,7 +18,7 @@ const SignIn = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post(`${API_BASE_URL}users/signin`, {
+      const res = await axios.post(`${API_BASE_URL}/users/signin`, {
         email,
         password,
       });

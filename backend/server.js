@@ -12,7 +12,7 @@ app.use(express.json());
 
 connectDB();
 
-app.use("/collabitor/api/v1/users", userRoutes);
+app.use("/api/v1/users", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Collabitor API is running");
