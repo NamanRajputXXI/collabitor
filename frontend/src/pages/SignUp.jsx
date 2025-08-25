@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAuthStore from "../store/useStore";
+import API_BASE_URL from "../config/api";
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
