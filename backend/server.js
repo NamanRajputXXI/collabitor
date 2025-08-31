@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const { connectDB } = require("./configs/connect");
 const userRoutes = require("./routes/user");
+const projectRoutes = require("./routes/project");
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 connectDB();
 
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/projects", projectRoutes);
 
 app.get("/", (req, res) => {
   res.send("Collabitor API is running");
