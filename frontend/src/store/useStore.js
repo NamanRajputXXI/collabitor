@@ -2,18 +2,18 @@ import { create } from "zustand";
 import axios from "axios";
 import API_BASE_URL from "../config/api";
 
-let parsedUser = null;
-try {
-  const storedUser = localStorage.getItem("user");
-  if (storedUser && storedUser !== "undefined") {
-    parsedUser = JSON.parse(storedUser);
-  }
-} catch (e) {
-  parsedUser = null;
-}
-
 const useAuthStore = create((set, get) => ({
-  user: parsedUser,
+  user: (() => {
+    try {
+      const storedUser = localStorage.getItem("user");
+      return storedUser && storedUser !== "undefined"
+        ? JSON.parse(storedUser)
+        : null;
+    } catch {
+      return null;
+    }
+  })(),
+
   token: localStorage.getItem("token") || null,
   projects: [],
 
